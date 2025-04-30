@@ -1,8 +1,8 @@
-provider "aws" {
-  region = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
-}
+# provider "aws" {
+#   # region = var.region
+#   # access_key = var.access_key
+#   # secret_key = var.secret_key
+# }
 module "gateway_load_balancer" {
   source = "../modules/common/load_balancer"
 
@@ -35,9 +35,9 @@ depends_on = [module.gateway_load_balancer]
 
 module "autoscale_gwlb" {
   source = "../autoscale-gwlb"
-  providers = {
-    aws = aws
-  }
+#   providers = {
+# #    aws = aws
+#   }
   depends_on = [module.gateway_load_balancer]
 
   target_groups = module.gateway_load_balancer[*].target_group_arn
@@ -64,13 +64,14 @@ module "autoscale_gwlb" {
   management_server = var.management_server
   configuration_template = var.configuration_template
   volume_type = var.volume_type
+  asg_name = join("-", [var.gateway_name, var.region])
 }
 
 data "aws_region" "current"{}
 
 module "management" {
   providers = {
-    aws = aws
+#    aws = aws
   }
   count = local.deploy_management_condition ? 1 : 0
   source = "../management"

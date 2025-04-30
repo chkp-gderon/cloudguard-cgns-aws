@@ -1,8 +1,8 @@
-provider "aws" {
-  region = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
-}
+# provider "aws" {
+#   region = var.region
+#   access_key = var.access_key
+#   secret_key = var.secret_key
+# }
 
 module "launch_vpc" {
   source = "../modules/vpc"
@@ -15,9 +15,9 @@ module "launch_vpc" {
 }
 module "tgw-gwlb"{
   source = "../tgw-gwlb"
-    providers = {
-    aws = aws
-  }
+  #   providers = {
+  #   # aws = aws
+  # }
   vpc_id = module.launch_vpc.vpc_id
   gateways_subnets = module.launch_vpc.public_subnets_ids_list
   number_of_AZs = var.number_of_AZs

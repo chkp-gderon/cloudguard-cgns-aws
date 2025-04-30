@@ -3,9 +3,11 @@ az1 = "eu-west-1a"
 az2 = "eu-west-1b"
 allowed_external_hosts = [""]
 
-security_vpc_cidr = "172.16.0.0/22" 
-
-
+access1_vpc_cidr = "192.168.0.0/24"
+access1_snet_cidr_pub_1a = "192.168.0.0/28"
+access1_snet_cidr_pub_1b = "192.168.0.16/28"
+access1_snet_cidr_pri_1a = "192.168.0.128/28"
+access1_snet_cidr_pri_1b = "192.168.0.144/28"
 
 spoke1_vpc_cidr = "192.168.1.0/24"
 spoke1_snet_cidr_pub_1a = "192.168.1.0/28"
@@ -20,13 +22,20 @@ spoke2_snet_cidr_pub_1b = "192.168.2.16/28"
 spoke2_snet_cidr_pri_1a = "192.168.2.128/28"
 spoke2_snet_cidr_pri_1b = "192.168.2.144/28"
 
-sec_snet_cidr_tgwa_1a = "172.16.0.0/28"
-sec_snet_cidr_tgwa_1b = "172.16.0.128/28"
+security_vpc_cidr = "172.16.0.0/22" 
+# sec_snet_cidr_tgwa_1a = "172.16.0.0/28"
+# sec_snet_cidr_tgwa_1b = "172.16.0.128/28"
 sec_snet_cidr_gwlbe_1a = "172.16.0.16/28"
 sec_snet_cidr_gwlbe_1b = "172.16.0.144/28"
 sec_snet_cidr_natgw_1a = "172.16.0.32/28"
 sec_snet_cidr_natgw_1b = "172.16.0.160/28"
-sec_snet_cidr_cp_1a = "172.16.0.48/28"
-sec_snet_cidr_cp_1b = "172.16.0.176/28"
+# sec_snet_cidr_cp_1a = "172.16.0.48/28"
+# sec_snet_cidr_cp_1b = "172.16.0.176/28"
 
 
+tn_name = "tnEUW1AWS01"
+mn_name = "mnMgmt"
+gw_prefix = "cp001"
+gw_size = "c5.xlarge"
+gw_version = "R81.20-BYOL"
+gw_maint_hash = "grub.pbkdf2.sha512.10000.08F40DC2121466D79BFCDEAB626039FB3AE4EF4A90C881BEAD425F36C8BE951DD1855803A9AB59E4C64ABE4FA8F27E80B8898B8B51E2911687AB3916A7102F2A.F09202790BDAE31611760F8A2C2B3851873F6A02941BD3FB2A068824533D51A009441F3425489EBF3F5C6777F46524E392C6197E14B31593957BF16D759CAEC6"

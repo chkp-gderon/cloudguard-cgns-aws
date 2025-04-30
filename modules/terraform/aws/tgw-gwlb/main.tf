@@ -1,8 +1,8 @@
-provider "aws" {
-  region = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
-}
+# provider "aws" {
+#   region = var.region
+#   access_key = var.access_key
+#   secret_key = var.secret_key
+# }
 
 
 resource "aws_subnet" "gwlbe_subnet1" {
@@ -225,9 +225,9 @@ resource "aws_route_table_association" "nat_gw_subnet4_rtb_assoc" {
 
 module "gwlb" {
   source = "../gwlb"
-    providers = {
-    aws = aws
-  }
+  #   providers = {
+  #   aws = aws
+  # }
   vpc_id = var.vpc_id
   subnet_ids = var.gateways_subnets
 

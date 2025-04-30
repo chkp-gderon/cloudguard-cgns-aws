@@ -4,3 +4,13 @@ Check Point CloudGuard PoC / PoV in AWS
 
 See: 
 1. https://github.com/CheckPointSW/CloudGuardIaaS.git 
+
+Accept marketplace terms: https://aws.amazon.com/marketplace/pp?sku=263gtcd87e2xefwbacsdwvorx 
+
+1 - networking creates spoke VPC's, 
+    ssh key, 
+    security VPC, GWLB and ASG, 
+    access VPC, 
+    TGW, attachments, and route tables. 
+    
+

@@ -1,8 +1,8 @@
-provider "aws" {
-  region = var.region
-  access_key = var.access_key
-  secret_key = var.secret_key
-}
+# provider "aws" {
+#   # region = var.region
+#   # access_key = var.access_key
+#   # secret_key = var.secret_key
+# }
 
 module "amis" {
   source = "../modules/amis"
@@ -200,9 +200,9 @@ resource "aws_instance" "management-instance" {
 
 module "cme_iam_role" {
   source = "../cme-iam-role"
-  providers = {
-    aws = aws
-  }
+  # providers = {
+  #   aws = aws
+  # }
   count = local.new_instance_profile_general
 
   sts_roles = var.sts_roles
@@ -211,9 +211,9 @@ module "cme_iam_role" {
 
 module "cme_iam_role_gwlb" {
   source = "../cme-iam-role-gwlb"
-  providers = {
-    aws = aws
-  }
+#   providers = {
+# #    aws = aws
+#   }
   count = local.new_instance_profile_gwlb
 
   sts_roles = var.sts_roles
