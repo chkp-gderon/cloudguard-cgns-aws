@@ -37,3 +37,19 @@ resource "aws_subnet" "spoke2_pri_1b" {
     Name = join("-", ["spoke2", "snet", "pri", var.az2, var.spoke2_snet_cidr_pri_1b])
   }
 }
+resource "aws_subnet" "spoke2_tgwa_1a" {
+  cidr_block = var.spoke2_snet_tgwa_1a
+  availability_zone = var.az1
+  vpc_id = aws_vpc.spoke2.id
+    tags = {
+    Name = join("-", ["spoke2", "snet", "tgwa", var.az1, var.spoke2_snet_tgwa_1a])
+  }
+}
+resource "aws_subnet" "spoke2_tgwa_1b" {
+  cidr_block = var.spoke2_snet_tgwa_1b
+  availability_zone = var.az2
+  vpc_id = aws_vpc.spoke2.id
+    tags = {
+    Name = join("-", ["spoke2", "snet", "tgwa", var.az2, var.spoke2_snet_tgwa_1b])
+  }
+}

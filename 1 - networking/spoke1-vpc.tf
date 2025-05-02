@@ -38,3 +38,21 @@ resource "aws_subnet" "spoke1_pri_1b" {
   }
 }
 
+resource "aws_subnet" "spoke1_tgwa_1a" {
+  cidr_block = var.spoke1_snet_tgwa_1a
+  availability_zone = var.az1
+  vpc_id = aws_vpc.spoke1.id
+    tags = {
+    Name = join("-", ["spoke1", "snet", "tgwa", var.az1, var.spoke1_snet_tgwa_1a])
+  }
+}
+resource "aws_subnet" "spoke1_tgwa_1b" {
+  cidr_block = var.spoke1_snet_tgwa_1b
+  availability_zone = var.az2
+  vpc_id = aws_vpc.spoke1.id
+    tags = {
+    Name = join("-", ["spoke1", "snet", "tgwa", var.az2, var.spoke1_snet_tgwa_1b])
+  }
+}
+
+

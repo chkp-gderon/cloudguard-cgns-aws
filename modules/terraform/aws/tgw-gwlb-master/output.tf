@@ -22,3 +22,9 @@ output "controller_name" {
 output "template_name" {
   value = var.configuration_template
 }
+output "tgw_subnets_ids_list" {
+   value = module.launch_vpc.tgw_subnets_ids_list
+}
+output "vpc_id" {
+  value = module.launch_vpc.vpc_id
+}
