@@ -5,6 +5,7 @@ provider "aws" {
   secret_key = var.AWS_SECRET_ACCESS_KEY
   token = var.AWS_SESSION_TOKEN
 }
+
 terraform {
   required_version = ">= 0.14.3"
   required_providers {

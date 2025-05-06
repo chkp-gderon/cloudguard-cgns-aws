@@ -59,3 +59,48 @@ resource "aws_subnet" "access1_tgwa_1b" {
     Name = join("-", ["access1", "snet", "tgwa", var.az2, var.access_snet_tgwa_1b])
   }
 }
+
+
+resource "aws_route_table" "access1_rt" {
+  vpc_id = aws_vpc.access1.id
+  tags = {
+    Name = join("-", ["access1", "rt"])
+  }
+
+}
+resource "aws_route" "access1_A_route" {
+  route_table_id = aws_route_table.access1_rt.id
+  destination_cidr_block = "10.0.0.0/8"
+  transit_gateway_id = aws_ec2_transit_gateway.tgw1.id
+}
+resource "aws_route" "access1_B_route" {
+  route_table_id = aws_route_table.access1_rt.id
+  destination_cidr_block = "172.16.0.0/12"
+  transit_gateway_id = aws_ec2_transit_gateway.tgw1.id
+}
+resource "aws_route" "access1_c_route" {
+  route_table_id = aws_route_table.access1_rt.id
+  destination_cidr_block = "192.168.0.0/16"
+  transit_gateway_id = aws_ec2_transit_gateway.tgw1.id
+}
+resource "aws_route" "access1_default_route" {
+  route_table_id = aws_route_table.access1_rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id = aws_internet_gateway.access_igw.id
+}
+resource "aws_route_table_association" "access1_pri1a_rta" {
+  route_table_id = aws_route_table.access1_rt.id
+  subnet_id = aws_subnet.access1_pri_1a.id
+}
+resource "aws_route_table_association" "access1_pri1b_rta" {
+  route_table_id = aws_route_table.access1_rt.id
+  subnet_id = aws_subnet.access1_pri_1b.id
+}
+resource "aws_route_table_association" "access1_pub1a_rta" {
+  route_table_id = aws_route_table.access1_rt.id
+  subnet_id = aws_subnet.access1_pub_1a.id
+}
+resource "aws_route_table_association" "access1_pub1b_rta" {
+  route_table_id = aws_route_table.access1_rt.id
+  subnet_id = aws_subnet.access1_pub_1b.id
+}

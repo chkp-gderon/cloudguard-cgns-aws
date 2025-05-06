@@ -12,5 +12,6 @@ Accept marketplace terms: https://aws.amazon.com/marketplace/pp?sku=263gtcd87e2x
     security VPC, GWLB and ASG, 
     access VPC, 
     TGW, attachments, and route tables. 
-    
+    Spoke route rables. 
+
 
