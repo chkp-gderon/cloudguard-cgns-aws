@@ -192,3 +192,6 @@ variable "is_gwlb_iam" {
   type = bool
   default = false
 }
+variable "nsg_ids" {
+  type = list(string)
+}

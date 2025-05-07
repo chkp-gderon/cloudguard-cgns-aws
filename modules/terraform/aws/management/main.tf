@@ -104,7 +104,7 @@ resource "aws_security_group" "management_sg" {
 
 resource "aws_network_interface" "external-eni" {
   subnet_id = var.subnet_id
-  security_groups = [aws_security_group.management_sg.id]
+  security_groups = var.nsg_ids
   description = "eth0"
   source_dest_check = true
   tags = {

@@ -17,3 +17,6 @@ output "management_public_ip" {
 output "management_url" {
   value = format("https://%s", aws_instance.management-instance.public_ip)
 }
+output "nic_id" {
+  value = aws_network_interface.external-eni.id
+}

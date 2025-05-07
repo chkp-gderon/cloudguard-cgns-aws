@@ -1,7 +1,8 @@
 region = "eu-west-1"
 az1 = "eu-west-1a"
 az2 = "eu-west-1b"
-allowed_external_hosts = [""]
+allowed_external_hosts = ["54.78.156.68/32", "108.129.170.72/32", "52.16.69.188/32"]  # /32 only
+allowed_cp_hosts = [ "109.145.189.50/32" ]  # /32 only
 
 access1_vpc_cidr = "192.168.0.0/24"
 access1_snet_cidr_pub_1a = "192.168.0.0/28"
