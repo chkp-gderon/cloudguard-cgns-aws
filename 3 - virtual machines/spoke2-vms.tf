@@ -74,7 +74,12 @@ resource "aws_security_group" "spoke2_sg_all" {
     prefix_list_ids = [data.aws_ec2_managed_prefix_list.this.id]
 #    cidr_blocks = concat(var.rfc1918, var.allowed_cp_hosts, var.allowed_external_hosts)
   }
-  
+  ingress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = var.rfc1918
+  }  
     egress {
     from_port   = 0
     to_port     = 0
