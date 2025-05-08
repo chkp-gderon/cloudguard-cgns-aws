@@ -15,6 +15,9 @@ Accept marketplace terms: https://aws.amazon.com/marketplace/pp?sku=263gtcd87e2x
     Spoke route rables, 
     SMS (until Smart-1 Cloud works). 
 
-2 - CME for Azure and AWS,
+2 - CME for Azure and AWS, STALLED
     AWS IAM roles,
     and a few network objects. 
+
+3 - VM's
+    

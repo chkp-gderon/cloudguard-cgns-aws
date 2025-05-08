@@ -104,3 +104,18 @@ resource "aws_route_table_association" "access1_pub1b_rta" {
   route_table_id = aws_route_table.access1_rt.id
   subnet_id = aws_subnet.access1_pub_1b.id
 }
+output "access1_vpc_id" {
+  value = aws_vpc.access1.id
+}
+output "access1_pub_1a_id" {
+  value = aws_subnet.access1_pub_1a.id
+}
+output "access1_pub_1b_id" {
+  value = aws_subnet.access1_pub_1b.id
+}
+output "access1_pri_1a_id" {
+  value = aws_subnet.access1_pri_1a.id
+}
+output "access1_pri_1b_id" {
+  value = aws_subnet.access1_pri_1b.id
+}

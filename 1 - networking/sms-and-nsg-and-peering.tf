@@ -48,78 +48,111 @@ module  "sms" {
    vpc_id = aws_vpc.access1.id
    name = join("-" ,["SMS", "NSG1", var.region])
      ingress {
-    from_port = 257
-    to_port = 257
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-  ingress {
-    from_port = 18191
-    to_port = 18191
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts,  var.rfc1918, var.testing_nets)
-  }
-  ingress {
-    from_port = 18192
-    to_port = 18192
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
-  }
-  ingress {
-    from_port = 18208
-    to_port = 18208
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
-  }
-  ingress {
-    from_port = 18210
-    to_port = 18210
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
-  }
-  ingress {
-    from_port = 18211
-    to_port = 18211
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
-  }
-  ingress {
-    from_port = 18221
-    to_port = 18221
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
-  }
-  ingress {
-    from_port = 18264
-    to_port = 18264
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+#     cidr_blocks = ["0.0.0.0/0"]
+     prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
   }
 
-  ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
-  }
-  ingress {
-    from_port = 443
-    to_port = 443
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
-  }
-  ingress {
-    from_port = 18190
-    to_port = 18190
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
-  }
-  ingress {
-    from_port = 19009
-    to_port = 19009
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
-  }
+#      ingress {
+#     from_port = 257
+#     to_port = 257
+#     protocol = "tcp"
+#     cidr_blocks = ["0.0.0.0/0"]
+#   }
+#   ingress {
+#     from_port = 18191
+#     to_port = 18191
+#     protocol = "tcp"
+#    # cidr_blocks = concat(var.allowed_external_hosts,  var.rfc1918, var.testing_nets)
+#     prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+#   }
+#   ingress {
+#     from_port = 18192
+#     to_port = 18192
+#     protocol = "tcp"
+#     prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+#   ingress {
+#     from_port = 18208
+#     to_port = 18208
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+#   ingress {
+#     from_port = 18210
+#     to_port = 18210
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+#   ingress {
+#     from_port = 18211
+#     to_port = 18211
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+#   ingress {
+#     from_port = 18221
+#     to_port = 18221
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+#   ingress {
+#     from_port = 18264
+#     to_port = 18264
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+
+#   ingress {
+#     from_port = 22
+#     to_port = 22
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+#   ingress {
+#     from_port = 443
+#     to_port = 443
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+#   ingress {
+#     from_port = 18190
+#     to_port = 18190
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+#   ingress {
+#     from_port = 19009
+#     to_port = 19009
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+#   ingress {
+#     from_port = 3389
+#     to_port = 3389
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
+#     ingress {
+#     from_port = 3389
+#     to_port = 3389
+#     protocol = "udp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
+#   }
 
      egress {
     from_port        = 0
@@ -135,81 +168,35 @@ output "management_public_ip" {
  resource "aws_security_group" "sms2" {
    vpc_id = aws_vpc.access1.id
    name = join("-" ,["SMS", "NSG2", var.region])
-     ingress {
-    from_port = 257
-    to_port = 257
-    protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+       ingress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+#     cidr_blocks = ["0.0.0.0/0"]
+     prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
   }
-  ingress {
-    from_port = 18191
-    to_port = 18191
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts)
-  }
-  ingress {
-    from_port = 18192
-    to_port = 18192
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts)
-  }
-  ingress {
-    from_port = 18208
-    to_port = 18208
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts)
-  }
-  ingress {
-    from_port = 18210
-    to_port = 18210
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts) 
-  }
-  ingress {
-    from_port = 18211
-    to_port = 18211
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts)
-  }
-  ingress {
-    from_port = 18221
-    to_port = 18221
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts)
-  }
-  ingress {
-    from_port = 18264
-    to_port = 18264
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts)
-  }
-
-  ingress {
-    from_port = 22
-    to_port = 22
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts)
-  }
-  ingress {
-    from_port = 443
-    to_port = 443
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts)
-  }
-  ingress {
-    from_port = 18190
-    to_port = 18190
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts)
-  }
-  ingress {
-    from_port = 19009
-    to_port = 19009
-    protocol = "tcp"
-    cidr_blocks = concat(var.allowed_external_hosts)
-  }
-
-     egress {
+#   ingress {
+#     from_port = 22
+#     to_port = 22
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_external_hosts)
+#   }
+#   ingress {
+#     from_port = 443
+#     to_port = 443
+#     protocol = "tcp"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #   cidr_blocks = concat(var.allowed_external_hosts)
+#   }
+#   ingress {
+#     from_port = 3389
+#     to_port = 3389
+#     protocol = "-1"
+#      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
+# #    cidr_blocks = concat(var.allowed_external_hosts)
+#   }
+   egress {
     from_port        = 0
     to_port          = 0
     protocol         = "-1"
@@ -222,3 +209,10 @@ output "management_public_ip" {
 #   peer_vpc_id = module.cp_tgw_gwlb_asg.vpc_id
 #   auto_accept = true
 # }
+
+output "nsg1_id" {
+  value = aws_security_group.sms1.id
+}
+output "nsg2_id" {
+  value = aws_security_group.sms2.id
+}
