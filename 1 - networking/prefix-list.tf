@@ -1,5 +1,5 @@
 resource "aws_ec2_managed_prefix_list" "this" {
-  name = join( "-", ["pl", "allow", var.region])
+  name = join( "-", ["pl", "allow", "public", var.region])
   address_family = "IPv4"
   max_entries = 25
   entry{
@@ -14,9 +14,9 @@ resource "aws_ec2_managed_prefix_list" "this" {
   entry {
     cidr = var.asg1
   }
-  # entry {
-  #   cidr = var.asg2
-  # }
+  entry {
+    cidr = var.asg2
+  }
   # entry {
   #   cidr = var.asg3
   # }

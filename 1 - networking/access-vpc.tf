@@ -104,6 +104,14 @@ resource "aws_route_table_association" "access1_pub1b_rta" {
   route_table_id = aws_route_table.access1_rt.id
   subnet_id = aws_subnet.access1_pub_1b.id
 }
+resource "aws_route_table_association" "access1_tgw1a_rta" {
+  route_table_id = aws_route_table.access1_rt.id
+  subnet_id = aws_subnet.access1_tgwa_1a.id
+}
+resource "aws_route_table_association" "access1_tgw1b_rta" {
+  route_table_id = aws_route_table.access1_rt.id
+  subnet_id = aws_subnet.access1_tgwa_1b.id
+}
 output "access1_vpc_id" {
   value = aws_vpc.access1.id
 }

@@ -45,9 +45,9 @@ variable "rasmushome" {
 variable "asg1" {
   type = string
 }
-# variable "asg2" {
-#   type = string
-# }
+variable "asg2" {
+  type = string
+}
 # variable "asg3" {
 #   type = string
 # }

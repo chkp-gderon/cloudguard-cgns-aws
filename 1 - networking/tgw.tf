@@ -12,24 +12,35 @@ resource "aws_ec2_transit_gateway" "tgw1" {
 
 resource "aws_ec2_transit_gateway_route_table" "cp_route_table" {
   transit_gateway_id = aws_ec2_transit_gateway.tgw1.id
+  tags = {
+    Name = join("-", ["TGW", "cp-route-table", var.region])
+  }
 }
 resource "aws_ec2_transit_gateway_route_table" "spokes_route_table" {
   transit_gateway_id = aws_ec2_transit_gateway.tgw1.id
+  tags = {
+    Name = join("-", ["TGW", "spokes-route-table", var.region])
+  }
 }
-resource "aws_ec2_transit_gateway_route" "spoke1_tgw_route" {
-  destination_cidr_block         = aws_vpc.spoke1.cidr_block
-  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.spoke1.id
-  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.spokes_route_table.id
-}
-resource "aws_ec2_transit_gateway_route" "spoke2_tgw_route" {
-  destination_cidr_block         = aws_vpc.spoke2.cidr_block
-  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.spoke2.id
-  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.spokes_route_table.id
-}
-resource "aws_ec2_transit_gateway_route" "example" {
+# resource "aws_ec2_transit_gateway_route" "spoke1_tgw_route" {
+#   destination_cidr_block         = aws_vpc.spoke1.cidr_block
+#   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.spoke1.id
+#   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.spokes_route_table.id
+# }
+# resource "aws_ec2_transit_gateway_route" "spoke2_tgw_route" {
+#   destination_cidr_block         = aws_vpc.spoke2.cidr_block
+#   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.spoke2.id
+#   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.spokes_route_table.id
+# }
+# resource "aws_ec2_transit_gateway_route" "access_tgw_route" {
+#   destination_cidr_block         = aws_vpc.access1.cidr_block
+#   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.spoke2.id
+#   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.spokes_route_table.id
+# }
+resource "aws_ec2_transit_gateway_route" "default_tgw_spoke_rt" {
   destination_cidr_block         = "0.0.0.0/0"
-  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.spoke2.id
-  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.cp_route_table.id
+  transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.security.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.spokes_route_table.id
 }
 
 # Attachments
@@ -74,7 +85,7 @@ resource "aws_ec2_transit_gateway_route_table_association" "access1" {
 }
 resource "aws_ec2_transit_gateway_route_table_association" "security" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.security.id
-  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.spokes_route_table.id
+  transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.cp_route_table.id
 }
 # propagations
 

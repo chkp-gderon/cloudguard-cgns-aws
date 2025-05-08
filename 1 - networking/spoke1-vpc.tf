@@ -98,7 +98,14 @@ resource "aws_route_table_association" "spoke1_pub1b_rta" {
   route_table_id = aws_route_table.spoke1_rt.id
   subnet_id = aws_subnet.spoke1_pub_1b.id
 }
-
+resource "aws_route_table_association" "spoke1_tgw1a_rta" {
+  route_table_id = aws_route_table.spoke1_rt.id
+  subnet_id = aws_subnet.spoke1_tgwa_1a.id
+}
+resource "aws_route_table_association" "spoke1_tgw1b_rta" {
+  route_table_id = aws_route_table.spoke1_rt.id
+  subnet_id = aws_subnet.spoke1_tgwa_1b.id
+}
 output "spoke1_vpc_id" {
   value = aws_vpc.spoke1.id
 }

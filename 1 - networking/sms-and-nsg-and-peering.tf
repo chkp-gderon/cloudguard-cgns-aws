@@ -54,6 +54,13 @@ module  "sms" {
 #     cidr_blocks = ["0.0.0.0/0"]
      prefix_list_ids = [aws_ec2_managed_prefix_list.this.id]
   }
+     ingress {
+    from_port = 0
+    to_port = 0
+    protocol = "-1"
+    cidr_blocks = var.rfc1918
+  }
+#    cidr_blocks = concat(var.allowed_cp_hosts,  var.rfc1918, var.testing_nets)
 
 #      ingress {
 #     from_port = 257
