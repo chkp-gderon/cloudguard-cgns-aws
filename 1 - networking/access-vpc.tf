@@ -127,3 +127,9 @@ output "access1_pri_1a_id" {
 output "access1_pri_1b_id" {
   value = aws_subnet.access1_pri_1b.id
 }
+output "access1_snet_tgw1a_id" {
+  value = aws_subnet.access1_tgwa_1a.id
+}
+output "access1_snet_tgw1b_id" {
+  value = aws_subnet.access1_tgwa_1b.id
+}

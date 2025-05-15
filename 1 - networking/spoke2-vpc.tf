@@ -121,3 +121,9 @@ output "spoke2_pri_1a_id" {
 output "spoke2_pri_1b_id" {
   value = aws_subnet.spoke2_pri_1b.id
 }
+output "spoke2_snet_tgw1a_id" {
+  value = aws_subnet.spoke2_tgwa_1a.id
+}
+output "spoke2_snet_tgw1b_id" {
+  value = aws_subnet.spoke2_tgwa_1b.id
+}

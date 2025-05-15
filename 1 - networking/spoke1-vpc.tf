@@ -122,5 +122,10 @@ output "spoke1_pri_1b_id" {
   value = aws_subnet.spoke1_pri_1b.id
 }
 
-
+output "spoke1_snet_tgw1a_id" {
+  value = aws_subnet.spoke1_tgwa_1a.id
+}
+output "spoke1_snet_tgw1b_id" {
+  value = aws_subnet.spoke1_tgwa_1b.id
+}
 

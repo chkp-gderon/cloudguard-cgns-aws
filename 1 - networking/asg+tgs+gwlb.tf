@@ -42,7 +42,7 @@ module  "cp_tgw_gwlb_asg" {
     // --- Check Point CloudGuard IaaS Security Gateways Auto Scaling Group Configuration ---
     gateway_name = join("-", [var.gw_prefix, var.region])
     gateway_instance_type = var.gw_size
-    minimum_group_size = 1
+    minimum_group_size = 0
     maximum_group_size = 10
     gateway_version = var.gw_version
     gateway_password_hash = var.gw_pw_hash
@@ -66,4 +66,17 @@ module  "cp_tgw_gwlb_asg" {
         
     // --- Other parameters ---
     volume_type = "gp3"
-    }
+}
+
+output "gwlb_arn" {
+    value = module.cp_tgw_gwlb_asg.gwlb_arn
+}
+output "gwlb_service_name" {
+    value = module.cp_tgw_gwlb_asg.gwlb_service_name
+}
+output "gwlbe_sec_1a" {
+    value = module.cp_tgw_gwlb_asg.gwlbe1a_id
+}
+output "gwlbe_sec_1b" {
+    value = module.cp_tgw_gwlb_asg.gwlbe1b_id
+}

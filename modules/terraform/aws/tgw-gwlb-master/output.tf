@@ -28,3 +28,9 @@ output "tgw_subnets_ids_list" {
 output "vpc_id" {
   value = module.launch_vpc.vpc_id
 }
+output "gwlbe1a_id" {
+  value = module.tgw-gwlb.gwlbe1a_id
+}
+output "gwlbe1b_id" {
+  value = module.tgw-gwlb.gwlbe1b_id
+}

@@ -22,3 +22,9 @@ output "controller_name" {
 output "template_name" {
   value = var.configuration_template
 }
+output "gwlbe1a_id" {
+  value = aws_vpc_endpoint.gwlb_endpoint1.id
+}
+output "gwlbe1b_id" {
+  value = aws_vpc_endpoint.gwlb_endpoint2.id
+}
